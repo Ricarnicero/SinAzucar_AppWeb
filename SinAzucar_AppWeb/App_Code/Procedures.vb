@@ -234,13 +234,16 @@ Public Class SP
         Return DtsPermiso
     End Function
 
-    Public Shared Function USUARIO(v_bandera As String, v_usuario As String, v_contrasena As String, v_modulo As String, Optional v_imei As String = "000") As DataTable
+    Public Shared Function USUARIO(v_bandera As String, Optional v_nombre As String = "", Optional v_correo As String = "", Optional v_contrasena As String = "", Optional v_edad As String = "", Optional v_ing_fav As String = "", Optional v_ing_no_fav As String = "", Optional imagen As Byte() = Nothing) As DataTable
         Dim SSCommandL As New SqlCommand("SP_USUARIO")
         SSCommandL.CommandType = CommandType.StoredProcedure
-        SSCommandL.Parameters.Add("@V_USUARIO", SqlDbType.NVarChar).Value = v_usuario
+        SSCommandL.Parameters.Add("@V_NOMBRE", SqlDbType.NVarChar).Value = v_nombre
+        SSCommandL.Parameters.Add("@V_CORREO", SqlDbType.NVarChar).Value = v_correo
         SSCommandL.Parameters.Add("@V_CONTRASENA", SqlDbType.NVarChar).Value = v_contrasena
-        SSCommandL.Parameters.Add("@V_imei", SqlDbType.NVarChar).Value = v_imei
-        SSCommandL.Parameters.Add("@V_MODULO", SqlDbType.NVarChar).Value = v_modulo
+        SSCommandL.Parameters.Add("@V_EDAD", SqlDbType.NVarChar).Value = v_edad
+        SSCommandL.Parameters.Add("@V_INGR_FAV", SqlDbType.NVarChar).Value = v_ing_fav
+        SSCommandL.Parameters.Add("@V_INGR_NO_FAV", SqlDbType.NVarChar).Value = v_ing_no_fav
+        SSCommandL.Parameters.Add("@V_FOTO_PERFIL", SqlDbType.VarBinary).Value = imagen
         SSCommandL.Parameters.Add("@V_Bandera", SqlDbType.NVarChar).Value = v_bandera
         Dim DtsLogin As DataTable = Consulta_Procedure(SSCommandL, "LogOn")
         Return DtsLogin
