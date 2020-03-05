@@ -1,0 +1,40 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>SinAzucar</title>
+    <script src="Scripts/jQuery.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Estilos/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" ScriptMode="Release" />
+        <div class="d-flex justify-content-around bg-light py-2 border-bottom fixed-top">
+            <img alt="IPN" src="Imagenes/ImgLogo_Cliente.png" class="img-fluid" style="max-height: 60px;" />
+            <div style="max-width: 60%; overflow-y: auto">
+                <telerik:RadMenu runat="server" ID="menu" RenderMode="Lightweight">
+                    <Items>
+                        <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Noticias"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Recetas"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Mi salud"></telerik:RadMenuItem>
+                    </Items>
+                </telerik:RadMenu>
+            </div>
+            <img alt="IPN" src="Imagenes/ImgLogo_Mc.png" class="img-fluid" style="max-height: 60px;" />
+        </div>
+        <div class="container py-2 mb-2 border rounded bg-light" style="margin-top: 85px">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
