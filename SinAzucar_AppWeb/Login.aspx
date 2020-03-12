@@ -18,15 +18,15 @@
                 </div>
                 <div class="col-md-6">
                     <label>Contraseña</label>
-                    <telerik:RadTextBox runat="server" type="password" ID="txtPwd" CssClass="form-control" placeholder="Contraseña" autocomplete="current-password" Width="100%"></telerik:RadTextBox>
+                    <telerik:RadTextBox runat="server" ID="txtPwd" CssClass="form-control" placeholder="Contraseña" autocomplete="current-password" Width="100%" TextMode="Password"></telerik:RadTextBox>
                 </div>
             </div>
             <br />
             <asp:Button runat="server" ID="btnLogin" class="btn btn-lg btn-primary btn-block w-50 mx-auto" Text="Iniciar sesión" />
         </div>
-    </telerik:RadAjaxPanel>
     <telerik:RadNotification ID="Notificacion" runat="server" Position="Center" Width="330" Height="160" Animation="Fade" EnableRoundedCorners="true" EnableShadow="true" Style="z-index: 100000">
     </telerik:RadNotification>
+    </telerik:RadAjaxPanel>
     <script type="text/javascript" lang="js">
         $("#divLogin").keypress(function () {
             if (arguments[0].key == "Enter") {

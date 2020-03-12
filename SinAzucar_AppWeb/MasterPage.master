@@ -22,10 +22,10 @@
             <div style="max-width: 60%; overflow-y: auto">
                 <telerik:RadMenu runat="server" ID="menu" RenderMode="Lightweight">
                     <Items>
-                        <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="Noticias"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="Recetas"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="Mi salud"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold" NavigateUrl="Perfil.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Noticias" NavigateUrl="Noticias.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Recetas" NavigateUrl="Recetas.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Mi salud" NavigateUrl="MiSalud.aspx"></telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenu>
             </div>
