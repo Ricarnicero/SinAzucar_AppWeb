@@ -51,4 +51,36 @@ Partial Class _Default
     Private Sub btnAddIngrediente_Click(sender As Object, e As EventArgs) Handles btnAddIngrediente.Click
         lbIngredientes.Items.Add("ingrediente nuevo")
     End Sub
+
+    Private Sub txtCantidad_Init(sender As Object, e As EventArgs) Handles txtCantidad.Init
+        txtCantidad.DataValueField = "CAT_CA_CANTIDAD"
+        txtCantidad.DataTextField = "CAT_CA_CANTIDAD"
+        txtCantidad.DataSource = SP.ADD_RECETA(6)
+    End Sub
+
+    Private Sub txtIngrediente_Init(sender As Object, e As EventArgs) Handles txtIngrediente.Init
+
+    End Sub
+    Private Sub txtMedida_Init(sender As Object, e As EventArgs) Handles txtMedida.Init
+        txtMedida.DataValueField = "CAT_ME_DESCRIPCION"
+        txtMedida.DataTextField = "CAT_ME_DESCRIPCION"
+        txtMedida.DataSource = SP.ADD_RECETA(7)
+    End Sub
+
+    Private Sub txtIngrediente_PreRender(sender As Object, e As EventArgs) Handles txtIngrediente.PreRender
+        'txtIngrediente.DataValueField = "CAT_ING_DESC"
+        'txtIngrediente.DataTextField = "CAT_ING_DESC"
+        'txtIngrediente.DataSource = SP.ADD_RECETA(8)
+        'txtIngrediente.DataBind()
+    End Sub
+
+    'Private Sub txtIngrediente_DropDownTemplateNeeded(sender As Object, e As AutoCompleteDropDownItemEventArgs) Handles txtIngrediente.DropDownTemplateNeeded
+
+    'End Sub
+
+    Private Sub txtIngrediente_DataBound(sender As Object, e As EventArgs) Handles txtIngrediente.DataBound
+        txtIngrediente.DataValueField = "CAT_ING_DESC"
+        txtIngrediente.DataTextField = "CAT_ING_DESC"
+        txtIngrediente.DataSource = SP.ADD_RECETA(8)
+    End Sub
 End Class

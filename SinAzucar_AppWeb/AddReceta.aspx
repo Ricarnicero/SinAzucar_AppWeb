@@ -34,12 +34,22 @@
                         <div class="row mb-2">
                             <div class="col-md">
                                 <label>Cantidad</label>
+                                <telerik:RadAutoCompleteBox runat="server" ID="txtCantidad" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Text" EnableDirectionDetection="true" TextSettings-SelectionMode="Single"></telerik:RadAutoCompleteBox>
                             </div>
                             <div class="col-md">
                                 <label>Medida</label>
+                                <telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true">
+                                    <HeaderTemplate>
+                                        Medidas
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <span class="my-1"><%# DataBinder.Eval(Container, "Text")%></span>
+                                    </ItemTemplate>
+                                </telerik:RadComboBox>
                             </div>
                             <div class="col-md">
                                 <label>Ingrediente</label>
+                                <telerik:RadAutoCompleteBox runat="server" ID="txtIngrediente" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Text" EnableDirectionDetection="true" TextSettings-SelectionMode="Single"></telerik:RadAutoCompleteBox>
                             </div>
                         </div>
                         <div class="text-center my-2">

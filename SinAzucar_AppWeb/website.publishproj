@@ -18,7 +18,7 @@ Copyright (C) Microsoft Corporation. Todos los derechos reservados.
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7f666cc5-cd3e-4648-80ac-40d9997c46ec}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
-    <SourceWebVirtualPath>/CONSUBANCO_AppWebConcentrador_v4</SourceWebVirtualPath>
+    <SourceWebVirtualPath>/SinAzucar_AppWeb</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <SourceWebProject>
     </SourceWebProject>
