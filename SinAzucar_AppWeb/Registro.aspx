@@ -72,7 +72,7 @@
                     await sleep(500);
                     demo.panel.get_element().innerHTML = "<div class='text-center'><h2 class='text-success'>¡Registro exitoso!</h2>" +
                         "<p class='text-muted'>Ahora puedes iniciar sesión con tu correo y contraseña.<br/>" +
-                        "Redireccionando al inicio de sesion en <span id='countdown'>10</span>" +
+                        "Redireccionando al inicio de sesion en <span id='countdown'>5</span>" +
                         "<br/> O puedes hacer click <a href='Login.aspx'>aquí</a> para regresar al Login</p>"
                     setInterval(() => {
                         $get("countdown").innerHTML -= 1;
