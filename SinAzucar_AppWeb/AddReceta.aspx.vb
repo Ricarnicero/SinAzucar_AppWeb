@@ -1,4 +1,5 @@
 ﻿
+Imports System.Data
 Imports Telerik.Web.UI
 
 Partial Class _Default
@@ -20,36 +21,118 @@ Partial Class _Default
         End If
     End Sub
     Private Sub wizardReceta_NextButtonClick(sender As Object, e As WizardEventArgs) Handles wizardReceta.NextButtonClick
-        e.NextStep.Enabled = True
-        e.CurrentStep.Enabled = False
+
+        Select Case e.CurrentStepIndex
+            Case 0
+                Dim res = GuardarReceta()
+                If res <> 0 Then
+                    e.NextStep.Enabled = True
+                    e.CurrentStep.Enabled = False
+                    Session("receta_id") = res
+                End If
+            Case 1
+                If guardarIngredientes(Session("receta_id")) Then
+                    e.NextStep.Enabled = True
+                    e.CurrentStep.Enabled = False
+                Else
+                    Funciones.showModal(Notificacion, "deny", "Error", "Error al agregar los ingredientes. Intenta más tarde")
+                End If
+            Case 2
+                If guardarPasos(Session("receta_id")) Then
+                    e.NextStep.Enabled = True
+                    e.CurrentStep.Enabled = False
+                Else
+                    Funciones.showModal(Notificacion, "deny", "Error", "Error al agregar los pasos. Intenta más tarde")
+                End If
+
+            Case 3
+                guardarFotos(Session("receta_id"))
+        End Select
     End Sub
 
     Private Sub wizardReceta_FinishButtonClick(sender As Object, e As WizardEventArgs) Handles wizardReceta.FinishButtonClick
-        Dim id_receta As String = GuardarReceta()
-        guardarPasos(id_receta)
-        guardarFotos(id_receta)
-        guardarIngredientes(id_receta)
+        'guardarPasos(id_receta)
+        'guardarFotos(id_receta)
+        'guardarIngredientes(id_receta)
     End Sub
 
-    Private Sub guardarIngredientes(id_receta As String)
-        Throw New NotImplementedException()
-    End Sub
+    Private Function guardarIngredientes(id_receta As String) As Boolean
+        Dim res As Boolean = True
+        For Each ingrediente As RadListBoxItem In lbIngredientes.Items
+            Try
+                SP.ADD_RECETA(v_bandera:=4, V_RECETA_ID:=id_receta, V_DESCRIPCION:=ingrediente.Text)
+            Catch ex As Exception
+                res = False
+            End Try
+        Next
+        Return res
+    End Function
 
     Private Sub guardarFotos(id_receta As String)
-        Throw New NotImplementedException()
+
+        Dim Imagen As New ImageProcessor.ImageFactory
+        'Imagen.Save()
     End Sub
 
-    Private Sub guardarPasos(id_receta As String)
-        Throw New NotImplementedException()
-    End Sub
+    Private Function guardarPasos(id_receta As String) As Boolean
+        Dim res As Boolean = True
+        For Each paso As RadListBoxItem In lbPasos.Items
+            Try
+                SP.ADD_RECETA(v_bandera:=3, V_RECETA_ID:=id_receta, V_DESCRIPCION:=paso.Text)
+            Catch ex As Exception
+                res = False
+            End Try
+        Next
+        Return res
+    End Function
 
 
     Private Function GuardarReceta() As String
-        Throw New NotImplementedException()
+        Dim id As String = 0
+        Try
+            If txtNombre.Text = "" Then
+                Throw New Exception("Dale un nombre a tu receta")
+            End If
+            If txtDificultad.Value = 0 Then
+                txtDificultad.Value = 0.5
+            End If
+            If txtDescripcion.Text = "" Then
+                txtDescripcion.Focus()
+                Throw New Exception("Cuentanos del resultado final de tu receta")
+            End If
+            Dim res = SP.ADD_RECETA(v_bandera:=1, V_NOMBRE:=txtNombre.Text, V_USR_ID:=tmpUSUARIO("CAT_LO_ID"), V_DESCRIPCION:=txtDescripcion.Text, V_LINK_VIDEO:=txtLink.Text, V_DIFICULTAD:=txtDificultad.Value)
+            If res.TableName = "Exception" Then
+                Throw New Exception("No fue posible agregar tu receta. Intenta más tarde")
+            End If
+            id = res(0)(0).ToString
+        Catch ex As Exception
+            Funciones.showModal(Notificacion, "deny", "Error", ex.Message)
+        End Try
+        Return id
     End Function
 
+    '-----------------------------------------------------
+    'Ingredientes
+    '-----------------------------------------------------
     Private Sub btnAddIngrediente_Click(sender As Object, e As EventArgs) Handles btnAddIngrediente.Click
-        lbIngredientes.Items.Add("ingrediente nuevo")
+        Try
+            If txtCantidad.Text = "" Then
+                Throw New Exception("Selecciona una cantidad")
+            End If
+            If txtMedida.SelectedValue = "" Then
+                Throw New Exception("Selecciona una medida")
+            End If
+            If txtIngrediente.Text = "" Then
+                Throw New Exception("Selecciona un ingrediente")
+            End If
+            lbIngredientes.Items.Add(txtCantidad.Text & " " & txtMedida.SelectedValue & " de " & txtIngrediente.Text)
+            Funciones.showModal(Notificacion, "ok", "Correcto", "Ingrediente agregado correctamente")
+            txtCantidad.Entries.Clear()
+            txtMedida.ClearSelection()
+            txtIngrediente.Entries.Clear()
+        Catch ex As Exception
+            Funciones.showModal(Notificacion, "deny", "Error", ex.Message)
+        End Try
     End Sub
 
     Private Sub txtCantidad_Init(sender As Object, e As EventArgs) Handles txtCantidad.Init
@@ -58,29 +141,46 @@ Partial Class _Default
         txtCantidad.DataSource = SP.ADD_RECETA(6)
     End Sub
 
-    Private Sub txtIngrediente_Init(sender As Object, e As EventArgs) Handles txtIngrediente.Init
-
-    End Sub
     Private Sub txtMedida_Init(sender As Object, e As EventArgs) Handles txtMedida.Init
         txtMedida.DataValueField = "CAT_ME_DESCRIPCION"
         txtMedida.DataTextField = "CAT_ME_DESCRIPCION"
         txtMedida.DataSource = SP.ADD_RECETA(7)
+        txtMedida.DataBind()
     End Sub
 
-    Private Sub txtIngrediente_PreRender(sender As Object, e As EventArgs) Handles txtIngrediente.PreRender
-        'txtIngrediente.DataValueField = "CAT_ING_DESC"
-        'txtIngrediente.DataTextField = "CAT_ING_DESC"
-        'txtIngrediente.DataSource = SP.ADD_RECETA(8)
-        'txtIngrediente.DataBind()
-    End Sub
-
-    'Private Sub txtIngrediente_DropDownTemplateNeeded(sender As Object, e As AutoCompleteDropDownItemEventArgs) Handles txtIngrediente.DropDownTemplateNeeded
-
-    'End Sub
-
-    Private Sub txtIngrediente_DataBound(sender As Object, e As EventArgs) Handles txtIngrediente.DataBound
+    Private Sub txtIngrediente_Init(sender As Object, e As EventArgs) Handles txtIngrediente.Init
         txtIngrediente.DataValueField = "CAT_ING_DESC"
         txtIngrediente.DataTextField = "CAT_ING_DESC"
         txtIngrediente.DataSource = SP.ADD_RECETA(8)
+    End Sub
+
+    '-----------------------------------------------------
+    'Pasos
+    '-----------------------------------------------------
+
+    Private Sub btnAddPaso_Click(sender As Object, e As EventArgs) Handles btnAddPaso.Click
+        If txtPasoNuevo.Text = "" Then
+            Throw New Exception("Da una breve descripcion de lo que se debe hacer a continuación")
+        End If
+        lbPasos.Items.Add(txtPasoNuevo.Text)
+        lbPasos.DataBind()
+        txtPasoNuevo.Text = ""
+    End Sub
+
+    Private Sub uploadedImages_FileUploaded(sender As Object, e As FileUploadedEventArgs) Handles uploadedImages.FileUploaded
+        Dim imagen As New ImageProcessor.ImageFactory()
+        imagen.Load(e.File.InputStream)
+        Dim watermark As New ImageProcessor.Imaging.TextLayer With {
+            .DropShadow = True,
+            .Text = "SinAzucar"
+        }
+        imagen.Watermark(watermark)
+        imagen.Quality(50)
+        Dim imageStream As IO.Stream = New IO.MemoryStream()
+        imagen.Save(imageStream)
+        Dim subidoBytes As Byte() = New Byte(imageStream.Length - 1) {}
+        imageStream.Read(subidoBytes, 0, subidoBytes.Length)
+        SP.ADD_RECETA(v_bandera:=1, V_RECETA_ID:=Session("CAT_LO_ID"), V_IMAGEN:=subidoBytes)
+        lblimagenes.Text &= e.File.FileName & " (Correcto); "
     End Sub
 End Class

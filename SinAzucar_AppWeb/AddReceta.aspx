@@ -38,13 +38,7 @@
                             </div>
                             <div class="col-md">
                                 <label>Medida</label>
-                                <telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true">
-                                    <HeaderTemplate>
-                                        Medidas
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <span class="my-1"><%# DataBinder.Eval(Container, "Text")%></span>
-                                    </ItemTemplate>
+                                <telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true" AllowCustomText="false" MarkFirstMatch="true" ItemsPerRequest="5">
                                 </telerik:RadComboBox>
                             </div>
                             <div class="col-md">
@@ -55,14 +49,32 @@
                         <div class="text-center my-2">
                             <asp:Button runat="server" ID="btnAddIngrediente" Text="Agregar" CssClass="btn btn-primary mx-auto" />
                         </div>
-                        <telerik:RadListBox runat="server" ID="lbIngredientes" AllowDelete="true" AllowReorder="true" AllowTransfer="false" AutoPostBackOnDelete="true" EmptyMessage="Añade ingredietnes" Width="100%" Height="450px"></telerik:RadListBox>
+                        <telerik:RadListBox runat="server" ID="lbIngredientes" AllowDelete="true" AllowReorder="true" AllowTransfer="false" AutoPostBackOnDelete="true" EmptyMessage="Añade ingredientes" Width="100%" Height="450px"></telerik:RadListBox>
                     </div>
                 </telerik:RadWizardStep>
-                <telerik:RadWizardStep AllowReturn="false" StepType="Step" Title="Pasos" Enabled="false"></telerik:RadWizardStep>
-                <telerik:RadWizardStep AllowReturn="false" StepType="Step" Title="Imagenes" Enabled="false"></telerik:RadWizardStep>
-                <telerik:RadWizardStep AllowReturn="false" StepType="Finish" Title="Resumen" Enabled="false"></telerik:RadWizardStep>
+                <telerik:RadWizardStep AllowReturn="false" StepType="Step" Title="Pasos" Enabled="false">
+                    <telerik:RadLabel runat="server" ID="ContadorPasos"></telerik:RadLabel>
+                    <telerik:RadTextBox runat="server" ID="txtPasoNuevo" TextMode="MultiLine" Width="100%"></telerik:RadTextBox>
+                    <asp:Button runat="server" ID="btnAddPaso" Text="Agregar paso" CssClass="btn btn-primary m-2"/>
+                    <hr />
+                    Estos son los pasos que has añadido recientemente. Puedes cambiar el orden o eliminar algun paso con los botones a un costado.
+                    <telerik:RadListBox runat="server" ID="lbPasos" Width="100%" Height="450px" AllowDelete="true" AllowReorder="true">
+                        <ItemTemplate>
+                            <div class="bg-light border rounded p-2 text-wrap">
+                                <%# DataBinder.Eval(Container, "Text") %>
+                            </div> 
+                        </ItemTemplate>
+                    </telerik:RadListBox>
+                </telerik:RadWizardStep>
+                <telerik:RadWizardStep AllowReturn="false" StepType="Step" Title="Imagenes" Enabled="false">
+                    <telerik:RadAsyncUpload runat="server" ID="uploadedImages" AllowedFileExtensions=".jpg" AllowedMimeTypes="image/jpeg" MaxFileInputsCount="5" PostbackTriggers="btnProcessImages"></telerik:RadAsyncUpload>
+                    <asp:Button runat="server" ID="btnProcessImages" Text="Subir imagenes" CssClass="btn btn-primary"/>
+                    <asp:Label runat="server" ID="lblimagenes"></asp:Label>
+                </telerik:RadWizardStep>
+                <telerik:RadWizardStep AllowReturn="false" StepType="Finish" Title="Resumen" Enabled="false" ></telerik:RadWizardStep>
             </WizardSteps>
         </telerik:RadWizard>
+        <telerik:RadNotification runat="server" ID="Notificacion" Position="Center" Animation="Fade" AutoCloseDelay="10000" KeepOnMouseOver="true" ShowCloseButton="true"  ></telerik:RadNotification>
     </telerik:RadAjaxPanel>
 </asp:Content>
 

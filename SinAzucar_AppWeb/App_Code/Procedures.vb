@@ -18,7 +18,7 @@ Public Class SP
         Return DtsLogin
     End Function
 
-    Public Shared Function ADD_RECETA(v_bandera As String, Optional V_RECETA_ID As String = "", Optional V_NOMBRE As String = "", Optional V_USR_ID As String = "", Optional V_DESCRIPCION As String = "", Optional V_LINK_VIDEO As String = "", Optional V_INGREDIENTES As String = "", Optional V_IMAGEN As Byte() = Nothing, Optional V_PASO As String = "") As DataTable
+    Public Shared Function ADD_RECETA(v_bandera As String, Optional V_RECETA_ID As String = "", Optional V_NOMBRE As String = "", Optional V_USR_ID As String = "", Optional V_DESCRIPCION As String = "", Optional V_LINK_VIDEO As String = "", Optional V_INGREDIENTES As String = "", Optional V_IMAGEN As Byte() = Nothing, Optional V_PASO As String = "", Optional V_DIFICULTAD As String = "") As DataTable
         Dim SSCommandL As New SqlCommand("SP_ADD_RECETA")
         SSCommandL.CommandType = CommandType.StoredProcedure
         SSCommandL.Parameters.Add("@V_RECETA_ID", SqlDbType.VarChar).Value = V_RECETA_ID
@@ -28,6 +28,7 @@ Public Class SP
         SSCommandL.Parameters.Add("@V_LINK_VIDEO", SqlDbType.VarChar).Value = V_LINK_VIDEO
         SSCommandL.Parameters.Add("@V_INGREDIENTES", SqlDbType.VarChar).Value = V_INGREDIENTES
         SSCommandL.Parameters.Add("@V_PASO", SqlDbType.VarChar).Value = V_PASO
+        SSCommandL.Parameters.Add("@V_DIFICULTAD", SqlDbType.VarChar).Value = V_DIFICULTAD
         SSCommandL.Parameters.Add("@V_IMAGEN", SqlDbType.VarBinary).Value = V_IMAGEN
         SSCommandL.Parameters.Add("@V_Bandera", SqlDbType.Int).Value = v_bandera
         Dim DtsLogin As DataTable = Consulta_Procedure(SSCommandL, "LogOn")

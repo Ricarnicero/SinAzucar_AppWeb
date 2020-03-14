@@ -12,7 +12,9 @@ const init = (timers) => {
     document.body.appendChild(createModal())
 
     $(document).mousemove(() => {
-        if (TIME_TO_CLOSE_SESSION <= TIME_TO_DIPLAY_ALERT) $("#ModalSession").modal("hide")
+        if (TIME_TO_CLOSE_SESSION <= TIME_TO_DIPLAY_ALERT) {
+            $("#ModalSession").modal("hide"); window.location.reload(true);
+        }
         TIME_TO_CLOSE_SESSION = MAX_TIME_INACTIVE;
     });
 
@@ -28,13 +30,7 @@ const init = (timers) => {
 }
 
 const createModal = () => {
-    var modal = document.createElement("DIV"),
-    dialog = document.createElement("DIV"),
-    content = document.createElement("DIV"),
-    header = document.createElement("DIV"),
-    body = document.createElement("DIV"),
-    closeModal = document.createElement("BUTTON"),
-    title = document.createElement("h4")
+    var modal = document.createElement("DIV")
 
     modal.className = "modal"
     modal.style.zIndex = 9999999

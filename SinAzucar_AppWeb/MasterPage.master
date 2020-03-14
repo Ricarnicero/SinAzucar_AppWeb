@@ -17,6 +17,12 @@
 <body>
     <form id="form1" runat="server">
         <telerik:RadScriptManager runat="server" ID="RadScriptManager1" ScriptMode="Release" />
+        <script type="text/javascript" src="Scripts/sessionTimeout.js"></script>
+        <telerik:RadScriptBlock runat="server">
+            <script type="text/javascript">
+                init({ timeout: <%=Session.Timeout * 60 %>, alert: 30 })
+            </script>
+        </telerik:RadScriptBlock>
         <div class="d-flex justify-content-around bg-light py-2 border-bottom fixed-top">
             <img alt="IPN" src="Imagenes/ImgLogo_Cliente.png" class="img-fluid" style="max-height: 60px;" />
             <div style="max-width: 60%; overflow-y: auto">
@@ -25,6 +31,7 @@
                         <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold" NavigateUrl="Perfil.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Noticias" NavigateUrl="Noticias.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Recetas" NavigateUrl="Recetas.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="add" NavigateUrl="AddReceta.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Mi salud" NavigateUrl="MiSalud.aspx"></telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenu>
