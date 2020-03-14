@@ -29,9 +29,9 @@
                 <telerik:RadMenu runat="server" ID="menu" RenderMode="Lightweight">
                     <Items>
                         <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold" NavigateUrl="Perfil.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Añadir" NavigateUrl="AddReceta.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Noticias" NavigateUrl="Noticias.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Recetas" NavigateUrl="Recetas.aspx"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="add" NavigateUrl="AddReceta.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Mi salud" NavigateUrl="MiSalud.aspx"></telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenu>

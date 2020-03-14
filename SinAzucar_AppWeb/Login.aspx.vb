@@ -51,7 +51,7 @@ Partial Class Login
             Dim licencia As Integer = LogOn(usr, pwd)
             Select Case licencia
                 Case "1"
-                    Response.Redirect("Noticias.aspx")
+                    Response.Redirect("AddReceta.aspx")
                 Case Else
                     Session.Abandon()
             End Select

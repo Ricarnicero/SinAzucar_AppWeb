@@ -1,6 +1,4 @@
-﻿window.history.forward();
-
-var MAX_TIME_INACTIVE = 600;
+﻿var MAX_TIME_INACTIVE = 600;
 var TIME_TO_DIPLAY_ALERT = 30;
 var TIME_TO_CLOSE_SESSION = MAX_TIME_INACTIVE
 

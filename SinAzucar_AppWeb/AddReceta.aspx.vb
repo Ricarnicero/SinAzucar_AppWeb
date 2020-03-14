@@ -46,14 +46,14 @@ Partial Class _Default
                 End If
 
             Case 3
-                guardarFotos(Session("receta_id"))
+                e.NextStep.Enabled = True
+                e.CurrentStep.Enabled = False
         End Select
     End Sub
 
     Private Sub wizardReceta_FinishButtonClick(sender As Object, e As WizardEventArgs) Handles wizardReceta.FinishButtonClick
-        'guardarPasos(id_receta)
-        'guardarFotos(id_receta)
-        'guardarIngredientes(id_receta)
+        SP.ADD_RECETA(13, Session("receta_id"))
+        Response.Redirect("Recetas.aspx")
     End Sub
 
     Private Function guardarIngredientes(id_receta As String) As Boolean
@@ -165,6 +165,7 @@ Partial Class _Default
         lbPasos.Items.Add(txtPasoNuevo.Text)
         lbPasos.DataBind()
         txtPasoNuevo.Text = ""
+        ContadorPasos.Text = "Paso " & (lbPasos.Items.Count + 1)
     End Sub
 
     Private Sub uploadedImages_FileUploaded(sender As Object, e As FileUploadedEventArgs) Handles uploadedImages.FileUploaded
@@ -180,7 +181,28 @@ Partial Class _Default
         imagen.Save(imageStream)
         Dim subidoBytes As Byte() = New Byte(imageStream.Length - 1) {}
         imageStream.Read(subidoBytes, 0, subidoBytes.Length)
-        SP.ADD_RECETA(v_bandera:=1, V_RECETA_ID:=Session("CAT_LO_ID"), V_IMAGEN:=subidoBytes)
-        lblimagenes.Text &= e.File.FileName & " (Correcto); "
+        SP.ADD_RECETA(v_bandera:=2, V_RECETA_ID:=Session("receta_id"), V_IMAGEN:=subidoBytes)
+    End Sub
+
+    Private Sub dockLayout_PreRender(sender As Object, e As EventArgs) Handles dockLayout.PreRender
+        dockInfoGral.Text = SP.ADD_RECETA(9, Session("receta_id")).Rows(0)(0).ToString
+
+        gridIngredientes.DataSource = SP.ADD_RECETA(10, Session("receta_id"))
+        gridIngredientes.DataBind()
+
+        gridPasos.DataSource = SP.ADD_RECETA(11, Session("receta_id"))
+        gridPasos.DataBind()
+
+        Dim dtab As DataTable = SP.ADD_RECETA(12, Session("receta_id"))
+        Dim b64table As New DataTable()
+        b64table.Columns.Add("ImgURL")
+        For Each row As DataRow In dtab.Rows
+            Dim newRow As DataRow = b64table.NewRow()
+            newRow(0) = "data:image;base64," + Convert.ToBase64String(row(0))
+            b64table.Rows.Add(newRow)
+        Next
+        b64table.AcceptChanges()
+        RadRotator1.DataSource = b64table
+        RadRotator1.DataBind()
     End Sub
 End Class
