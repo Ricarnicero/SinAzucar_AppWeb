@@ -2,7 +2,7 @@
 Imports System.Data
 Imports Telerik.Web.UI
 
-Partial Class _Default
+Partial Class AddReceta
     Inherits System.Web.UI.Page
     Public Property tmpUSUARIO As IDictionary
         Get

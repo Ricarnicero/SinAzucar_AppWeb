@@ -1,7 +1,7 @@
 ﻿
 Imports Telerik.Web.UI
 
-Partial Class _Default
+Partial Class Recetas
     Inherits System.Web.UI.Page
 
     Private Sub lvRecetas_NeedDataSource(sender As Object, e As RadListViewNeedDataSourceEventArgs) Handles lvRecetas.NeedDataSource
