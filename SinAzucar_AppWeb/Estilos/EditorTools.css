@@ -1,0 +1,57 @@
+﻿/* custom save tools icons */
+/*Active state*/
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsDocx:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsRtf:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsMarkdown:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAs:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsPDF:before {
+    font-family: TelerikWebUI;
+    content: "\e0BD";
+}
+
+/*Hovered state*/
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsDocx:hover:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsRtf:hover:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsMarkdown:hover:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAs:hover:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSSaveAsPDF:hover:before {
+    font-family: TelerikWebUI;
+    content: "\e0BD";
+}
+
+/*Selected state*/
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsDocx.reToolSelected:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsDocx.reToolSelected:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsMarkdown.reToolSelected:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAs.reToolSelected:before,
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reSaveAsPDF.reToolSelected:before {
+    font-family: TelerikWebUI;
+    content: "\e0BD";
+}
+
+
+/* custom open tool icon */
+/*Active state*/
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reOpen:before {
+    font-family: TelerikWebUI;
+    content: "\e0A2";
+}
+
+/*Hovered state*/
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reOpen:hover:before {
+    font-family: TelerikWebUI;
+    content: "\e0A2";
+}
+
+/*Selected state*/
+div.RadEditor .reToolBarWrapper .RadRibbonBar .reOpen.reToolSelected:before {
+    font-family: TelerikWebUI;
+    content: "\e0A2";
+}
+
+
+/* demo container */
+.demo-container.no-bg {
+    margin: 0 auto;
+    width: 900px;
+}

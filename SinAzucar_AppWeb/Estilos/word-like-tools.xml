@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <modules>
+        <module name="RadEditorStatistics" enabled="true" visible="true"/>
+        <module name="RadEditorDomInspector" enabled="false" visible="false" />
+        <module name="RadEditorNodeInspector" enabled="false" visible="false" />
+        <module name="RadEditorHtmlInspector"  enabled="false" visible="false"  />
+    </modules>
+    <tools name="Portapapeles" tab="Inicio">
+        <tool name="PasteStrip" size="large"/>
+        <tool name="Cut" size="medium" shortcut="CTRL+X" showtext="true" />
+        <tool name="Copy" size="medium" shortcut="CTRL+C"/>
+    </tools>
+    <tools name="Fuente" tab="Inicio">
+        <tool name="FontName" shortcut="CTRL+SHIFT+F" />
+        <tool name="Bold" strip="FontBasicTools" shortcut="CTRL+B"/>
+        <tool name="Italic" strip="FontBasicTools" shortcut="CTRL+I"/>
+        <tool name="Underline" strip="FontBasicTools" shortcut="CTRL+U"/>
+        <tool name="StrikeThrough" strip="FontBasicTools1"/>
+        <tool name="Superscript" strip="FontBasicTools1"/>
+        <tool name="Subscript" strip="FontBasicTools1"/>
+        <tool name="RealFontSize" shortcut="CTRL+SHIFT+P" />
+        <tool name="ForeColor"/>
+        <tool name="BackColor"/>
+    </tools>
+    <tools name="Parrafo" tab="Inicio">
+        <tool name="InsertUnorderedList" strip="ListsAndIndention"/>
+        <tool name="InsertOrderedList" strip="ListsAndIndention"/>
+        <tool name="Indent" strip="ListsAndIndention"/>
+        <tool name="Outdent" strip="ListsAndIndention"/>
+        <tool name="InsertParagraph" strip="ListsAndIndention"/>
+        <tool name="JustifyLeft" strip="Align"/>
+        <tool name="JustifyCenter" strip="Align"/>
+        <tool name="JustifyRight" strip="Align"/>
+        <tool name="JustifyFull" strip="Align"/>
+        <tool name="JustifyNone" strip="Align"/>
+        <tool name="FormatBlock" />
+    </tools>
+    <tools name="Editar" tab="Inicio">
+        <tool name="FindAndReplace" size="medium" text="Buscar" shortcut="CTRL+F"/>
+        <tool name="SelectAll" size="medium" shortcut="CTRL+A"/>
+        <tool name="FormatStripper" size="medium" showtext="true" />
+    </tools>
+    <tools name="Tablas" tab="Insertar">
+        <tool name="InsertTableLight" />
+        <tool name="InsertRowAbove" />
+        <tool name="InsertRowBelow" />
+        <tool name="DeleteRow" />
+        <tool name="InsertColumnLeft" />
+        <tool name="InsertColumnRight" />
+        <tool name="DeleteColumn" />
+        <tool name="SetTableProperties" />
+        <tool name="InsertTable" />
+    </tools>
+    <tools name="Imagenes" tab="Insertar">
+        <tool name="ImageManager" size="large" shortcut="CTRL+G" text="Insertar" />
+    </tools>
+    <tools name="Links" tab="Insertar">
+        <tool name="LinkManager" size="large" shortcut="CTRL+K" text="Insertar" />
+    </tools>
+    <tools name="Comentarios" tab="Insertar">
+        <tool name="AddComment" size="large" text="Insertar" />
+    </tools>
+    <tools name="Especial" tab="Insertar">
+        <tool name="InsertGroupbox" size="large" text="Grupo" />
+        <tool name="InsertDate" size="medium" text="Fecha" />
+        <tool name="InsertTime" size="medium" text="Hora" />
+    </tools>
+    <tools name="Otros" tab="Insertar">
+        <tool name="InsertSymbol" />
+        <tool name="InsertFormForm" />
+        <tool name="InsertFormButton" />
+        <tool name="InsertFormCheckbox" />
+        <tool name="InsertFormHidden" />
+        <tool name="InsertFormPassword" />
+        <tool name="InsertFormRadio" />
+        <tool name="InsertFormReset" />
+        <tool name="InsertFormSelect" />
+        <tool name="InsertFormSubmit" />
+        <tool name="InsertFormTextarea" />
+        <tool name="InsertFormText" />
+    </tools>
+    <tools name="Propiedades" tab="Página">
+        <tool name="PageProperties" size="large" />
+    </tools>
+    <tools name="Corregir" tab="Revisar">
+        <tool name="AjaxSpellCheck" size="large" text="Ortografia" />
+    </tools>
+    <tools name="Comentarios" tab="Revisar">
+        <tool name="AddComment" size="large" text="Añadir" />
+        <tool name="RemoveComment" size="medium" Text="Eliminar"/>
+        <tool name="RemoveAllComments" size="medium" Text="eliminar todos"/>
+    </tools>
+    <tools name="Zoom" tab="Ver">
+        <tool name="Zoom"/>
+    </tools>
+    <tools name="Window" tab="Ver">
+        <tool name="ToggleScreenMode" size="large" text="Pantalla Completa" shortcut="F11 / CMD+F11"/>
+    </tools>
+</root>
