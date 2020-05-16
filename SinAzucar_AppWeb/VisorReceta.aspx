@@ -9,6 +9,19 @@
 
         }
     </style>
+    <telerik:RadSocialShare ID="ssOptions" runat="server">
+                <MainButtons>
+                    <telerik:RadSocialButton SocialNetType="ShareOnPinterest" />
+                    <telerik:RadSocialButton SocialNetType="ShareOnFacebook"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="ShareOnTwitter"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="Blogger"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="Delicious"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="Digg"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="Reddit"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="Tumblr"></telerik:RadSocialButton>
+                    <telerik:RadSocialButton SocialNetType="MailTo"></telerik:RadSocialButton>
+                </MainButtons>
+            </telerik:RadSocialShare>
     <div class="card" style="width: 100%">
         <telerik:RadBinaryImage runat="server" ID="RadBinaryImage1"
             AutoAdjustImageControlSize="false" AlternateText="Error al cargar la foto" Style="width: 100%; height: 350px; object-fit: cover;" />
@@ -28,7 +41,7 @@
                 <asp:Label runat="server" ID="lblDificultad"></asp:Label></span>
         </div>
     </div>
-
+    <
     <asp:PlaceHolder runat="server" ID="phPasos"></asp:PlaceHolder>
 </asp:Content>
 

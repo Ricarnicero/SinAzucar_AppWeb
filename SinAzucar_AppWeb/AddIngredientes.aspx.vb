@@ -1,7 +1,7 @@
 ﻿
 Imports Telerik.Web.UI
 
-Partial Class _Default
+Partial Class AddIngredientes
     Inherits System.Web.UI.Page
 
     Private Sub gridIngredientes_NeedDataSource(sender As Object, e As GridNeedDataSourceEventArgs) Handles gridIngredientes.NeedDataSource

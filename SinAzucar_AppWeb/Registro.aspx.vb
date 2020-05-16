@@ -1,5 +1,5 @@
 ﻿
-Partial Class _Default
+Partial Class Registro
     Inherits System.Web.UI.Page
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click

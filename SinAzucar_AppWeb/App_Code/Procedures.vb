@@ -56,4 +56,16 @@ Public Class SP
         Return DtsLogin
     End Function
 
+    Public Shared Function MI_SALUD(v_bandera As Integer, Optional v_id As Integer = Nothing, Optional v_valor As Double = Nothing, Optional v_tipo As Integer = Nothing, Optional v_fecha As Date = Nothing) As DataTable
+        Dim SSCommandL As New SqlCommand("SP_MI_SALUD")
+        SSCommandL.CommandType = CommandType.StoredProcedure
+        SSCommandL.Parameters.Add("@V_Bandera", SqlDbType.Int).Value = v_bandera
+        SSCommandL.Parameters.Add("@v_id", SqlDbType.Int).Value = v_id
+        SSCommandL.Parameters.Add("@v_valor", SqlDbType.Int).Value = v_valor
+        SSCommandL.Parameters.Add("@v_tipo", SqlDbType.Float).Value = v_tipo
+        SSCommandL.Parameters.Add("@v_fecha", SqlDbType.Date).Value = v_fecha
+        Dim DtsLogin As DataTable = Consulta_Procedure(SSCommandL, "LogOn")
+        Return DtsLogin
+    End Function
+
 End Class

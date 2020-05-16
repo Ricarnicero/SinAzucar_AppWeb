@@ -16,9 +16,12 @@ Partial Class VisorReceta
     End Sub
 
     Private Sub VisorReceta_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         Dim DT As DataTable = SP.DISPLAY_RECETAS(v_bandera:=2, V_RECETA_ID:=id)
 
         Dim info As DataRow = DT(0)
+        ssOptions.TitleToShare = "Mira """ & info("NOMBRE") & """ "
+        ssOptions.UrlToShare = "https://dev.mcnoc.mx/RichisTest/VisorReceta.aspx?id=" & id
 
         RadBinaryImage1.DataValue = IIf(info("FOTO") IsNot DBNull.Value, info("FOTO"), New System.Byte(-1) {})
 
