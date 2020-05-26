@@ -21,7 +21,9 @@ Partial Class MiSalud
 
     Private Sub _Default_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
-
+            If tmpUSUARIO Is Nothing Then
+                Response.Redirect("login.aspx")
+            End If
             Session.Remove("CAT_LO_ID_AUX")
             Try
                 Session("CAT_LO_ID_AUX") = Request.QueryString("id")
@@ -29,14 +31,15 @@ Partial Class MiSalud
                     pnlAddGlucosa.Visible = False
                     pnlAddPresion.Visible = False
                     pnlAddPeso.Visible = False
+                    pnlShareLink.Visible = False
+                Else
+                    txtCopy.Text = "https://dev.mcnoc.mx/RichisTest/MiSalud.aspx?id=" + tmpUSUARIO("CAT_LO_ID")
                 End If
             Catch ex As Exception
 
             End Try
 
-            If tmpUSUARIO Is Nothing Then
-                Response.Redirect("login.aspx")
-            End If
+
         End If
 
         chartGlucosa.DataSource = SP.MI_SALUD(v_bandera:=0, v_id:=GetID, v_tipo:=0)

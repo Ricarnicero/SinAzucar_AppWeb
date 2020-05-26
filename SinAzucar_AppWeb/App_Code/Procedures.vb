@@ -37,11 +37,14 @@ Public Class SP
         Return DtsLogin
     End Function
 
-    Public Shared Function DISPLAY_RECETAS(v_bandera As String, Optional V_RECETA_ID As String = Nothing, Optional V_WHERE As String = Nothing) As DataTable
+    Public Shared Function DISPLAY_RECETAS(v_bandera As String, Optional V_RECETA_ID As String = Nothing, Optional V_WHERE As String = Nothing, Optional V_USUARIO_ID As String = Nothing, Optional V_CALIFICACION As String = Nothing, Optional V_COMENTARIO As String = Nothing) As DataTable
         Dim SSCommandL As New SqlCommand("SP_DISPLAY_RECETAS")
         SSCommandL.CommandType = CommandType.StoredProcedure
         SSCommandL.Parameters.Add("@V_WHERE", SqlDbType.VarChar).Value = V_WHERE
         SSCommandL.Parameters.Add("@V_RECETA_ID", SqlDbType.VarChar).Value = V_RECETA_ID
+        SSCommandL.Parameters.Add("@V_USUARIO_ID", SqlDbType.VarChar).Value = V_USUARIO_ID
+        SSCommandL.Parameters.Add("@V_CALIFICACION", SqlDbType.VarChar).Value = V_CALIFICACION
+        SSCommandL.Parameters.Add("@V_COMENTARIO", SqlDbType.VarChar).Value = V_COMENTARIO
         SSCommandL.Parameters.Add("@V_Bandera", SqlDbType.Int).Value = v_bandera
         Dim DtsLogin As DataTable = Consulta_Procedure(SSCommandL, "LogOn")
         Return DtsLogin

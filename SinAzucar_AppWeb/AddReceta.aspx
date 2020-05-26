@@ -40,7 +40,7 @@
                         </div>
                         <div class="d-block ">
                             <label>Medida</label>
-                            <telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true" AllowCustomText="false" MarkFirstMatch="true" ItemsPerRequest="5">
+                            <telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true" AllowCustomText="true" MarkFirstMatch="true" ItemsPerRequest="5">
                             </telerik:RadComboBox>
                         </div>
                         <div class="d-block ">
