@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-12">
                                     <telerik:RadAjaxPanel runat="server">
-                                        <label>Ingredientes que me hacen daño o no me gustan</label>
+                                        <label>Ingredientes a <u>evitar</u></label>
                                         <telerik:RadAutoCompleteBox runat="server" ID="acbIngredientes" EmptyMessage="Selecciona Ingredientes" InputType="Token" AllowCustomEntry="false" HighlightFirstMatch="true" TokensSettings-AllowTokenEditing="false" Delimiter="," MaxResultCount="5" Width="100%" AutoPostBack="true">
                                         </telerik:RadAutoCompleteBox>
                                     </telerik:RadAjaxPanel>

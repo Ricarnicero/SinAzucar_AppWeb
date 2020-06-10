@@ -150,7 +150,7 @@ Partial Class AddReceta
         SP.ADD_RECETA(v_bandera:=3, V_RECETA_ID:=id, V_HTML:=html)
 
 
-        SP.ADD_RECETA(v_bandera:=13, V_RECETA_ID:=id)
+        'SP.ADD_RECETA(v_bandera:=13, V_RECETA_ID:=id)
 
         Response.Redirect("Recetas.aspx")
     End Sub
