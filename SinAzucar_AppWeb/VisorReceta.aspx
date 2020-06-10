@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h3 class="text-center">Ingredientes</h3>
-                <telerik:RadListView runat="server" ID="lvPasos" ItemPlaceholderID="phPasos">
+                <telerik:RadListView runat="server" ID="lvIngredientes" ItemPlaceholderID="phPasos">
                     <LayoutTemplate>
                         <ul>
                             <asp:PlaceHolder runat="server" ID="phPasos"></asp:PlaceHolder>

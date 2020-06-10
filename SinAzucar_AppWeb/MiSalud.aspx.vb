@@ -2,7 +2,6 @@
 Partial Class MiSalud
     Inherits System.Web.UI.Page
 
-    Private id As Integer = -1
 
     Public Property tmpUSUARIO As IDictionary
         Get

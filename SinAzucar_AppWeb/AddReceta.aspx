@@ -45,7 +45,9 @@
                         </div>
                         <div class="d-block ">
                             <label>Ingrediente</label>
-                            <telerik:RadAutoCompleteBox runat="server" ID="txtIngrediente" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Text" EnableDirectionDetection="true" TextSettings-SelectionMode="Single"></telerik:RadAutoCompleteBox>
+                            <telerik:RadAjaxPanel runat="server">
+                                <telerik:RadAutoCompleteBox runat="server" ID="txtIngrediente" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Token" EnableDirectionDetection="true" TextSettings-SelectionMode="Single" AutoPostBack="true"></telerik:RadAutoCompleteBox>
+                            </telerik:RadAjaxPanel>
                         </div>
                         <div class="text-center my-2">
                             <asp:Button runat="server" ID="btnAddIngrediente" Text="Agregar" CssClass="btn btn-primary mx-auto btn-block" />

@@ -14,7 +14,30 @@
             -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(rgba(0,0,0,.6)), to(rgba(0,0,0,1)));
         }
     </style>
-    <h2 class="text-center">Novedades</h2>
+    <telerik:RadSearchBox runat="server" ID="sbRecetas" HighlightFirstMatch="true" EmptyMessage="Buscar receta" Width="100%" ShowSearchButton="true">
+        <SearchContext ShowDefaultItem="false">
+            <Items>
+                <telerik:SearchContextItem Text="Nombre" Key="0" />
+                <telerik:SearchContextItem Text="Dificultad" Key="1" />
+                <telerik:SearchContextItem Text="Ingrediente" Key="2" />
+            </Items>
+        </SearchContext>
+        <DropDownSettings>
+            <ItemTemplate>
+                <div class="media">
+                    <telerik:RadBinaryImage runat="server" ID="RadBinaryImage1" DataValue='<%# IIf(DataBinder.Eval(Container.DataItem, "FOTO") IsNot DBNull.Value, DataBinder.Eval(Container.DataItem, "FOTO"), New System.Byte(-1) {})%>'
+                        AutoAdjustImageControlSize="false" ToolTip='<%#DataBinder.Eval(Container.DataItem, "NOMBRE", "Foto de {0}") %>'
+                        AlternateText='<%#DataBinder.Eval(Container.DataItem, "NOMBRE", "Ups! No podemos mostrar la foto de {0}") %>' Style="width: 64px; height: 64px;" />
+                    <div class="media-body">
+                        <h5 class="mt-0"><b><%# DataBinder.Eval(Container.DataItem, "NOMBRE") %></b>&nbsp;<span style="font-size: .5em"><%# DataBinder.Eval(Container.DataItem, "FECHA").ToString.Substring(0, 10) %></span></h5>
+                        <p class="card-text"><%# DataBinder.Eval(Container.DataItem, "DESCRIPCION") %></p>
+                        <span>Dificultad: <%# GetFaceDificult(DataBinder.Eval(Container.DataItem, "DIFICULTAD"))%> </span>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </DropDownSettings>
+    </telerik:RadSearchBox>
+    <h2 class="text-center">Recetas</h2>
     <telerik:RadListView runat="server" ID="lvRecetas" ItemPlaceholderID="lvContainer">
         <LayoutTemplate>
             <div class="row">

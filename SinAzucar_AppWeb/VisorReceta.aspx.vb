@@ -49,8 +49,8 @@ Partial Class VisorReceta
             phPasos.Controls.Add(New LiteralControl(IIf(info("HTML") IsNot DBNull.Value, info("HTML"), "<div>¡UPS! No hemos encontrado informacion para esta receta ):</div>")))
 
             Try
-                lvPasos.DataSource = SP.DISPLAY_RECETAS(v_bandera:=3, V_RECETA_ID:=Session("recetaid"))
-                lvPasos.DataBind()
+                lvIngredientes.DataSource = SP.DISPLAY_RECETAS(v_bandera:=3, V_RECETA_ID:=Session("recetaid"))
+                lvIngredientes.DataBind()
             Catch ex As Exception
 
             End Try

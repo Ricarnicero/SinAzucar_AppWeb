@@ -15,6 +15,14 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Estilos/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <%--   <style>
+        .border .border-bottom{
+            border: 1px solid #2F3D34 !important;
+        }
+        .bg-light{
+            background-color: #A5D6B6!important;
+        }
+    </style>--%>
 </head>
 <body>
     <form id="form1" runat="server">

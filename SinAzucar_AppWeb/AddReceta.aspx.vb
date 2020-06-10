@@ -76,8 +76,9 @@ Partial Class AddReceta
             Dim item As New RadListBoxItem
             item.Attributes.Add("cantidad", txtCantidad.Text)
             item.Attributes.Add("medida", txtMedida.SelectedValue)
-            item.Attributes.Add("ingrediente", txtIngrediente.Text)
-            item.Text = txtCantidad.Text & " " & txtMedida.SelectedValue & " de " & txtIngrediente.Text
+            item.Attributes.Add("ingrediente", txtIngrediente.Entries(0).Text)
+            item.Text = txtCantidad.Text & " " & txtMedida.SelectedValue & " de " & txtIngrediente.Entries(0).Text
+            item.Value = txtIngrediente.Entries(0).Value
             lbIngredientes.Items.Add(item)
             Funciones.showModal(Notificacion, "ok", "Correcto", "Ingrediente agregado correctamente")
             txtCantidad.Entries.Clear()
@@ -102,9 +103,9 @@ Partial Class AddReceta
     End Sub
 
     Private Sub txtIngrediente_Init(sender As Object, e As EventArgs) Handles txtIngrediente.Init
-        txtIngrediente.DataValueField = "CAT_ING_DESC"
-        txtIngrediente.DataTextField = "CAT_ING_DESC"
-        txtIngrediente.DataSource = SP.ADD_RECETA(8)
+        txtIngrediente.DataValueField = "VALOR"
+        txtIngrediente.DataTextField = "TEXTO"
+        txtIngrediente.DataSource = SP.ADD_INGREDIENTE(v_bandera:=2)
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
@@ -132,7 +133,7 @@ Partial Class AddReceta
         Dim res2 As Boolean = True
         For Each ingrediente As RadListBoxItem In lbIngredientes.Items
             Try
-                SP.ADD_RECETA(v_bandera:=4, V_RECETA_ID:=id, V_CANTIDAD:=ingrediente.Attributes("cantidad"), V_MEDIDA:=ingrediente.Attributes("medida"), V_INGREDIENTES:=ingrediente.Attributes("ingrediente"))
+                SP.ADD_RECETA(v_bandera:=4, V_RECETA_ID:=id, V_CANTIDAD:=ingrediente.Attributes("cantidad"), V_MEDIDA:=ingrediente.Attributes("medida"), V_INGREDIENTES:=ingrediente.Value)
             Catch ex As Exception
                 res2 = False
             End Try
@@ -154,4 +155,7 @@ Partial Class AddReceta
         Response.Redirect("Recetas.aspx")
     End Sub
 
+    Private Sub txtIngrediente_EntryAdded(sender As Object, e As AutoCompleteEntryEventArgs) Handles txtIngrediente.EntryAdded
+        SP.ADD_INGREDIENTE(v_bandera:=1, v_ingrediente:=e.Entry.Text)
+    End Sub
 End Class
