@@ -6,6 +6,9 @@
     <div id="pnlGeneral" class="bg-light ">
         <fieldset>
             <legend>Mi perfil</legend>
+            <div runat="server" id="pnlUpgradePerfil" visible="false">
+                ¿Te gustaría contribuir con tus recetas? Envía correo a <a runat="server" id="aMailTo">rtorress1400@alumno.ipn.mx</a> para solicitar esta caracteristica
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-2 text-center">

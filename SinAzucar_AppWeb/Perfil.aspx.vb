@@ -23,6 +23,13 @@ Partial Class Perfil
         acbIngredientes.DataTextField = "TEXTO"
         acbIngredientes.DataValueField = "VALOR"
         If Not IsPostBack Then
+            If tmpUSUARIO("CAT_LO_ROL").ToString >= 2 Then
+                pnlUpgradePerfil.Visible = True
+                Dim href As String = "mailto:rtorress1400@alumno.ipn.mx?" &
+                    "subject=" & Server.UrlEncode("SinAzucar: Solicitar añadir recetas") &
+                    "&body=" & Server.UrlEncode("¡Hola! Mi correo es " & tmpUSUARIO("CAT_LO_CORREO") & " y solicito añadir recetas")
+                aMailTo.HRef = href.Replace("+", "%20")
+            End If
             acbIngredientes.DataBind()
 
             Dim info As DataRow = SP.PERFIL_USUARIO(V_BANDERA:=0, V_USUARIO_ID:=tmpUSUARIO("CAT_LO_ID")).Rows(0)
