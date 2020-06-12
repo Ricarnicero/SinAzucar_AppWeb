@@ -99,5 +99,14 @@ Public Class SP
         Dim DtsLogin As DataTable = Consulta_Procedure(SSCommandL, "SP_BUSCAR_RECETAS")
         Return DtsLogin
     End Function
+    Public Shared Function CONFIRMACION_RECETAS(V_BANDERA As String, Optional V_RECETA_ID As Integer = Nothing, Optional V_USUARIO_ID As Integer = Nothing) As DataTable
+        Dim SSCommandL As New SqlCommand("SP_CONFIRMACION_RECETAS")
+        SSCommandL.CommandType = CommandType.StoredProcedure
+        SSCommandL.Parameters.Add("@V_BANDERA", SqlDbType.VarChar).Value = V_BANDERA
+        SSCommandL.Parameters.Add("@V_RECETA_ID", SqlDbType.Int).Value = V_RECETA_ID
+        SSCommandL.Parameters.Add("@V_USUARIO_ID", SqlDbType.Int).Value = V_USUARIO_ID
+        Dim DtsLogin As DataTable = Consulta_Procedure(SSCommandL, "SP_CONFIRMACION_RECETAS")
+        Return DtsLogin
+    End Function
 
 End Class

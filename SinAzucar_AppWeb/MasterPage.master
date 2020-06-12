@@ -38,11 +38,13 @@
             <div style="max-width: 60%; overflow-y: auto">
                 <telerik:RadMenu runat="server" ID="menu" RenderMode="Lightweight">
                     <Items>
-                        <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold" NavigateUrl="Perfil.aspx"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="Añadir" NavigateUrl="AddReceta.aspx"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="Noticias" NavigateUrl="Noticias.aspx"></telerik:RadMenuItem>
-                        <telerik:RadMenuItem Text="Recetas" NavigateUrl="Recetas.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="SinAzucar" CssClass="font-weight-bold" NavigateUrl="Recetas.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Mi perfil" NavigateUrl="Perfil.aspx"></telerik:RadMenuItem>
                         <telerik:RadMenuItem Text="Mi salud" NavigateUrl="MiSalud.aspx" ></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="+ Receta" NavigateUrl="AddReceta.aspx"></telerik:RadMenuItem>
+                        <telerik:RadMenuItem Text="Recetas" NavigateUrl="Recetas.aspx"></telerik:RadMenuItem>
+                        <%--<telerik:RadMenuItem Text="Noticias" NavigateUrl="Noticias.aspx"></telerik:RadMenuItem>--%>
+                        <telerik:RadMenuItem Text="Administrador" NavigateUrl="ConfirmarRecetas.aspx"></telerik:RadMenuItem>
                     </Items>
                 </telerik:RadMenu>
             </div>

@@ -18,6 +18,8 @@ Partial Class AddReceta
     Private Sub _Default_Init(sender As Object, e As EventArgs) Handles Me.Init
         If tmpUSUARIO Is Nothing Then
             Response.Redirect("Login.aspx")
+        ElseIf tmpUSUARIO("CAT_LO_ROL").ToString >= 2 Then
+            Response.Redirect("Login.aspx")
         End If
     End Sub
 
@@ -120,6 +122,9 @@ Partial Class AddReceta
             If txtDescripcion.Text = "" Then
                 txtDescripcion.Focus()
                 Throw New Exception("Cuentanos del resultado final de tu receta")
+            End If
+            If asyncPhoto.UploadedFiles.Count = 0 Then
+                Throw New Exception("Sube una foto (jpg o png)")
             End If
             Dim res = SP.ADD_RECETA(v_bandera:=1, V_NOMBRE:=txtNombre.Text, V_USR_ID:=tmpUSUARIO("CAT_LO_ID"), V_DESCRIPCION:=txtDescripcion.Text, V_LINK_VIDEO:=txtLink.Text, V_DIFICULTAD:=txtDificultad.Value)
             If res.TableName = "Exception" Then

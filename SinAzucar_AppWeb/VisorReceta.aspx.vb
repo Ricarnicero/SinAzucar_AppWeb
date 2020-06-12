@@ -28,14 +28,15 @@ Partial Class VisorReceta
         If Not IsPostBack Then
 
             Dim DT As DataTable
-            Try
+            If tmpUSUARIO IsNot Nothing Then
                 DT = SP.DISPLAY_RECETAS(v_bandera:=2, V_RECETA_ID:=Session("recetaid"), V_USUARIO_ID:=tmpUSUARIO("CAT_LO_ID"))
-            Catch ex As Exception
+            Else
                 DT = SP.DISPLAY_RECETAS(v_bandera:=2, V_RECETA_ID:=Session("recetaid"))
-
-            End Try
+                divCalificacion.Visible = False
+                pnlAddComentario.Visible = False
+            End If
             Dim info As DataRow = DT(0)
-            ssOptions.TitleToShare = "Mira """ & info("NOMBRE") & """ "
+            ssOptions.TitleToShare = "¡Hola! Mira esta receta """ & info("NOMBRE") & """ "
             ssOptions.UrlToShare = "https://dev.mcnoc.mx/RichisTest/VisorReceta.aspx?id=" & Session("recetaid")
 
             RadBinaryImage1.DataValue = IIf(info("FOTO") IsNot DBNull.Value, info("FOTO"), New System.Byte(-1) {})
@@ -62,10 +63,6 @@ Partial Class VisorReceta
 
             End Try
 
-            If tmpUSUARIO Is Nothing Then
-                txtDificultad.Enabled = False
-                pnlAddComentario.Visible = False
-            End If
         End If
     End Sub
 

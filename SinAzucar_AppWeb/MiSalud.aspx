@@ -40,7 +40,9 @@
                         </XAxis>
                         <YAxis>
                             <PlotBands>
-                                <telerik:PlotBand From="70" To="100" Color="#4ad970" Alpha="190" /> 
+                                <telerik:PlotBand From="0" To="70" Color="YELLOW" Alpha="190" /> 
+                                <telerik:PlotBand From="70" To="100" Color="GREEN" Alpha="190" /> 
+                                <telerik:PlotBand From="100" To="1000" Color="YELLOW" Alpha="190" /> 
                             </PlotBands>
                         </YAxis>
                         <Series>

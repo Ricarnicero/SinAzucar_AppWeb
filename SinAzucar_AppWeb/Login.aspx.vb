@@ -18,7 +18,7 @@ Partial Class Login
     End Property
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
         If tmpUSUARIO IsNot Nothing Then
-            Response.Redirect("Noticias.aspx")
+            Response.Redirect("Recetas.aspx")
         End If
     End Sub
     Function LogOn(ByVal strEmail As String, ByVal strPassword As String) As String
@@ -51,7 +51,7 @@ Partial Class Login
             Dim licencia As Integer = LogOn(usr, pwd)
             Select Case licencia
                 Case "1"
-                    Response.Redirect("AddReceta.aspx")
+                    Response.Redirect("Recetas.aspx")
                 Case Else
                     Session.Abandon()
             End Select
