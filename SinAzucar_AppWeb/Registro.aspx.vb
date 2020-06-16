@@ -13,6 +13,9 @@ Partial Class Registro
     End Sub
 
     Private Function ValidateForm() As String
+        If Not New Regex("^[\w\.\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]{1,})*(\.[a-zA-Z]{2,3}){1,2}$").IsMatch(txtCorreo.Text, 0) Then
+            Return "Correo no válido"
+        End If
         If txtPwd.Text.Length < 8 Then
             Return "La contraseña debe tener al menos 8 caracteres"
         End If
@@ -22,9 +25,7 @@ Partial Class Registro
         If Not New Regex("[A-Za-zñÑÁÉÍÓÚáéíóú\.\ ]+").IsMatch(txtNombre.Text, 0) Then
             Return "El nombre no puede llevar caracteres especiales"
         End If
-        If Not New Regex("^[\w\.\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]{1,})*(\.[a-zA-Z]{2,3}){1,2}$").IsMatch(txtCorreo.Text, 0) Then
-            Return "Correo no válido"
-        End If
+
 
         Return "1"
     End Function

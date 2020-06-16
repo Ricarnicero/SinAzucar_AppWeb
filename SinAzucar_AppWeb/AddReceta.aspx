@@ -68,12 +68,12 @@
                     <br />
                     <small class="text-muted">Extensiones permitidas: jpg, png. Max 10 MB.</small>
                 </p>
-                <telerik:RadAsyncUpload runat="server" ID="asyncPhoto" PostbackTriggers="btnGuardar" AllowedFileExtensions="jpg,png"></telerik:RadAsyncUpload>
+                <telerik:RadAsyncUpload runat="server" ID="asyncPhoto" RenderMode="Lightweight" PostbackTriggers="btnGuardar" AllowedFileExtensions="jpg,png"></telerik:RadAsyncUpload>
             </fieldset>
             <fieldset>
                 <legend>Descripcion de la receta</legend>
                 <p>A continuación describe detalladamente los pasos a seguir para elaborar la receta. Puedes agregar fotos si deseas.</p>
-                <telerik:RadEditor runat="server" ID="editor" Width="100%" Height="600px" ToolbarMode="RibbonBar" EnableComments="true" ToolsFile="Estilos/word-like-tools.xml" EditModes="Design, Preview, HTML" SkinID="WordLikeExperience" Language="es-ES">
+                <telerik:RadEditor  runat="server" ID="editor" Width="100%" Height="600px" ToolbarMode="RibbonBar" EnableComments="true" ToolsFile="Estilos/word-like-tools.xml" EditModes="Design, Preview, HTML" SkinID="WordLikeExperience" Language="es-ES">
                     <CssFiles>
                         <telerik:EditorCssFile Value="./Estilos/bootstrap.min.css" />
                     </CssFiles>

@@ -48,7 +48,7 @@
             <div class="col-md-10 mx-auto my-2 p-0 border-0 bg-white" id="<%# Eval("ID") %>" onclick="RecetaClick(this)">
                 <div class="card" style="width: 100%">
                     <telerik:RadBinaryImage runat="server" ID="RadBinaryImage1" DataValue='<%# IIf(Eval("FOTO") IsNot DBNull.Value, Eval("FOTO"), New System.Byte(-1) {})%>'
-                        AutoAdjustImageControlSize="false" ToolTip='<%#Eval("NOMBRE", "Foto de {0}") %>'
+                        AutoAdjustImageControlSize="false" ToolTip='<%#Eval("NOMBRE", "Foto de {0}") %>' load="lazy"
                         AlternateText='<%#Eval("NOMBRE", "Ups! No podemos mostrar la foto de {0}") %>' Style="width: 100%; height: 350px; object-fit: cover;" />
                     <div class="card-img-overlay text-white" style="text-shadow: 1px 1px 2px black;">
                         <h4 class="card-title"><b><%# Eval("NOMBRE") %></b>&nbsp;<span style="font-size: .5em"><%# Eval("FECHA").ToString.Substring(0, 10) %></span></h4>
