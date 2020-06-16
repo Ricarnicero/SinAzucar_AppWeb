@@ -35,18 +35,19 @@
                 <div class="row mb-2">
                     <div class="col-md-6 my-1">
                         <div class="d-block ">
-                            <label>Cantidad</label>
-                            <telerik:RadAutoCompleteBox runat="server" ID="txtCantidad" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Text" EnableDirectionDetection="true" TextSettings-SelectionMode="Single"></telerik:RadAutoCompleteBox>
+                            <label>Cantidad <span class="text-muted" style="font-size:.8em">* Obligatorio</span></label>
+                            <telerik:RadAutoCompleteBox runat="server" ID="txtCantidad" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" MaxResultCount="10" InputType="Text" EnableDirectionDetection="true" TextSettings-SelectionMode="Single"></telerik:RadAutoCompleteBox>
                         </div>
                         <div class="d-block ">
-                            <label>Medida</label>
-                            <telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true" AllowCustomText="true" MarkFirstMatch="true" ItemsPerRequest="5">
-                            </telerik:RadComboBox>
+                            <label>Medida <span class="text-muted" style="font-size:.8em">(Opcional)</span></label>
+                            <telerik:RadAutoCompleteBox runat="server" ID="txtMedida" EmptyMessage="Medida" Width="100%" AllowCustomEntry="true" MaxResultCount="10" InputType="Text" EnableDirectionDetection="true" TextSettings-SelectionMode="Single"></telerik:RadAutoCompleteBox>
+                            <%--<telerik:RadComboBox runat="server" ID="txtMedida" EmptyMessage="Seleccione" Width="100%" EnableLoadOnDemand="true" AllowCustomText="true" MarkFirstMatch="true" ItemsPerRequest="5">
+                            </telerik:RadComboBox>--%>
                         </div>
                         <div class="d-block ">
-                            <label>Ingrediente</label>
+                            <label>Ingrediente <span class="text-muted" style="font-size:.8em">* Obligatorio</span></label>
                             <telerik:RadAjaxPanel runat="server">
-                                <telerik:RadAutoCompleteBox runat="server" ID="txtIngrediente" EmptyMessage="Cantidad" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Token" EnableDirectionDetection="true" TextSettings-SelectionMode="Single" AutoPostBack="true"></telerik:RadAutoCompleteBox>
+                                <telerik:RadAutoCompleteBox runat="server" ID="txtIngrediente" EmptyMessage="Ingrediente" Width="100%" AllowCustomEntry="true" HighlightFirstMatch="true" MaxResultCount="10" InputType="Token" EnableDirectionDetection="true" TextSettings-SelectionMode="Single" AutoPostBack="true"></telerik:RadAutoCompleteBox>
                             </telerik:RadAjaxPanel>
                         </div>
                         <div class="text-center my-2">

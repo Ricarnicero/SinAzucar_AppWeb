@@ -69,22 +69,19 @@ Partial Class AddReceta
             If txtCantidad.Text = "" Then
                 Throw New Exception("Selecciona una cantidad")
             End If
-            If txtMedida.SelectedValue = "" Then
-                Throw New Exception("Selecciona una medida")
-            End If
             If txtIngrediente.Text = "" Then
                 Throw New Exception("Selecciona un ingrediente")
             End If
             Dim item As New RadListBoxItem
             item.Attributes.Add("cantidad", txtCantidad.Text)
-            item.Attributes.Add("medida", txtMedida.SelectedValue)
+            item.Attributes.Add("medida", txtMedida.Text)
             item.Attributes.Add("ingrediente", txtIngrediente.Entries(0).Text)
-            item.Text = txtCantidad.Text & " " & txtMedida.SelectedValue & " de " & txtIngrediente.Entries(0).Text
+            item.Text = txtCantidad.Text & " " & txtMedida.Text & " de " & txtIngrediente.Entries(0).Text
             item.Value = txtIngrediente.Entries(0).Value
             lbIngredientes.Items.Add(item)
             Funciones.showModal(Notificacion, "ok", "Correcto", "Ingrediente agregado correctamente")
             txtCantidad.Entries.Clear()
-            txtMedida.ClearSelection()
+            txtMedida.Entries.Clear()
             txtIngrediente.Entries.Clear()
         Catch ex As Exception
             Funciones.showModal(Notificacion, "deny", "Error", ex.Message)
